@@ -7,3 +7,5 @@
 # RubyMine
 .idea
 .editorconfig
+
+config/settings.local.yml
