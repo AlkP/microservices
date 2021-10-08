@@ -14,3 +14,19 @@
 
 `createdb -U username -h localhost microservice_development`
 `createdb -U username -h localhost microservice_test`
+##
+####Работа с миграциями
+
+Для просмотра списка доступных команд
+```
+bin/rake --tasks
+```
+```
+bin/rake db:migrate
+RACK_ENV=test bin/rake db:migrate
+```
+чтобы смигрировать на опеределенную версию
+```
+bin/rake ‘db:migrate[0]’
+```
+вместо 0 можно указать timestamp файла.
