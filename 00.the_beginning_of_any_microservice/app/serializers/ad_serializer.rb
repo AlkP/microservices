@@ -1,7 +1,5 @@
 class AdSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes %i[
-    title description city lat lon
-  ]
+  attributes :title, :description, :city, :lat, :lon
 end

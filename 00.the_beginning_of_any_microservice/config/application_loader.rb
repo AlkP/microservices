@@ -24,6 +24,7 @@ module ApplicationLoader
 
   def require_app
     require_file 'config/application'
+    require_file 'app/services/basic_service'
     require_dir 'app'
   end
 
