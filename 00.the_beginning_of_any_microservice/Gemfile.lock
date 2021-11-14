@@ -87,6 +87,8 @@ GEM
     rspec-support (3.9.4)
     ruby2_keywords (0.0.5)
     sequel (5.32.0)
+    sequel-seed (1.1.2)
+      sequel (>= 4.49.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -123,6 +125,7 @@ DEPENDENCIES
   rake (~> 13.0.1)
   rspec (~> 3.9.0)
   sequel (~> 5.32.0)
+  sequel-seed (~> 1.1, >= 1.1.2)
   sinatra (~> 2.0.0)
   sinatra-contrib (~> 2.0.0)
 

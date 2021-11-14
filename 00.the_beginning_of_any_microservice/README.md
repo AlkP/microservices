@@ -24,6 +24,9 @@ bin/rake --tasks
 ```
 bin/rake db:migrate
 RACK_ENV=test bin/rake db:migrate
+
+bin/rake db:seed
+RACK_ENV=test bin/rake db:seed
 ```
 чтобы смигрировать на опеределенную версию
 ```
