@@ -6,14 +6,24 @@
 
 ##
 Для запуска сервера `bin/puma`
+
+Сервис будет доступен по адресу `localhost:3003`
+
+endpoints:
+
+'/v1/signup' => регистрация пользователя
+
+'/v1/login' => логин пользователя (на выходе токен)
+
+'/v1/auth'  => аутентификация пользователя (на выходе user_id)
 ##
 запуск консоли `bin/console`
 ##
 Требуется переименовать _settings.local.yml (убрать подчеркивание).
 Вносим данные соединения с сервером. И создаем базу данных
 
-`createdb -U username -h localhost microservice_development`
-`createdb -U username -h localhost microservice_test`
+`createdb -U username -h localhost auth_microservice_development`
+`createdb -U username -h localhost auth_microservice_test`
 ##
 ####Работа с миграциями
 

@@ -3,8 +3,8 @@ module PaginationLinks
     return {} if dataset.pagination_record_count.zero?
 
     links = {
-        first: pagination_link(page: 1),
-        last: pagination_link(page: dataset.page_count)
+      first: pagination_link(page: 1),
+      last: pagination_link(page: dataset.page_count)
     }
 
     links[:next] = pagination_link(page: dataset.next_page) if dataset.next_page.present?
