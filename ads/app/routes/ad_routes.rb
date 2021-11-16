@@ -1,7 +1,7 @@
 class AdRoutes < Application
-  helpers PaginationLinks
+  helpers PaginationLinks, Auth
 
-  namespace '/v1' do
+  namespace '/v1/ads' do
     get do
       page = params[:page].presence || 1
       ads = Ad.reverse_order(:updated_at)
@@ -16,7 +16,7 @@ class AdRoutes < Application
 
       result = Ads::CreateService.call(
           ad: ad_params[:ad],
-          user_id: params[:user_id]
+          user_id: user_id
       )
 
       if result.success?

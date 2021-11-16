@@ -19,11 +19,5 @@ Sequel.migration do
       
       primary_key [:filename]
     end
-    
-    create_table(:schema_seeds) do
-      String :filename, :text=>true, :null=>false
-      
-      primary_key [:filename]
-    end
   end
 end

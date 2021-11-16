@@ -20,8 +20,8 @@ post '/v1' => создать статью
 Требуется переименовать _settings.local.yml (убрать подчеркивание).
 Вносим данные соединения с сервером. И создаем базу данных
 
-`createdb -U username -h localhost microservice_development`
-`createdb -U username -h localhost microservice_test`
+`createdb -U username -h localhost ads_microservice_development`
+`createdb -U username -h localhost ads_microservice_test`
 ##
 ####Работа с миграциями
 
