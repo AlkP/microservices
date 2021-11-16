@@ -1,0 +1,16 @@
+ru:
+  model:
+    errors:
+      user:
+        name:
+          blank: Укажите имя
+          format: Неверный формат имени \A\w+\z
+        email:
+          blank: Укажите адрес электронной почты
+        password:
+          blank: Укажите пароль
+      user_session:
+        uiid:
+          blank: UUID должен быть задан
+        create_service:
+          unauthorized: Ошибка аутентификации пользователя

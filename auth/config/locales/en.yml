@@ -1,0 +1,10 @@
+en:
+  model:
+    errors:
+      ad:
+        title:
+          blank: Specify the name
+        description:
+          blank: Specify the description
+        city:
+          blank: Specify the city
