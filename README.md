@@ -11,21 +11,6 @@ auth - сервис работы с пользователями (создани
 
 ads - сервис для работы со статьями
 
-geo - сервис для обработки геоданных
-
 ##
-####Запуск RabbitMQ:
 
-```cassandraql
-docker run \
-  --rm \
-  --name rabbitmq \
-  -p 5672:5672 \
-  -p 15672:15672 \
-  --hostname node1 \
-  -v rabbitmq:/var/lib/rabbitmq \
-  rabbitmq:3-management
-```
-http://localhost:15672/
-user:     guest
-password: guest
+rabbit_mq - примеры работы с RabbitMQ
