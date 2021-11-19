@@ -2,4 +2,5 @@ db:
   database: ads_microservice_development
 
 rabbit_mq:
+  app_id: ads
   consumer_pool: 10

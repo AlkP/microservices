@@ -15,3 +15,8 @@ ru:
       not_unique: Данный ресурс уже существует
       missing_parameters: В запросе отсутствуют необходимые параметры
       unauthorized: Доступ к ресурсу ограничен
+
+  services:
+    ads:
+      update_service:
+        not_found: 'Объявление не найдено'

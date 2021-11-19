@@ -1,3 +1,4 @@
-db: # TODO нужно задать свои данные и переименовать файл (убрать подчеркивание)
-  user: user
-  password: password
+rabbit_mq:
+  host: localhost
+  username: guest
+  password: guest

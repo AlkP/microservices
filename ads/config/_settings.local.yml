@@ -3,7 +3,6 @@ db: # TODO нужно задать свои данные и переименов
   password: password
 
 rabbit_mq:
-  app_id: ads
   host: localhost
   username: guest
   password: guest
