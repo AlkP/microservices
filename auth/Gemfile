@@ -28,6 +28,8 @@ gem 'rack-request-id'
 
 gem 'jwt'
 
+gem 'bunny'
+
 group :development do
   gem 'amazing_print'
 end

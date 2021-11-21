@@ -5,3 +5,5 @@ pagination:
   page_size: 10
 app:
   secret: secret
+rabbit_mq:
+  consumers_pool: 10
