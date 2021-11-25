@@ -1,4 +1,5 @@
 require_relative 'rpc_api'
+require_relative '../../../../ads/app/lib/rabbit_mq'
 
 module AuthService
   class RpcClient
