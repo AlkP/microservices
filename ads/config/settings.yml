@@ -1,5 +1,12 @@
+app:
+  name: ads
 db:
   adapter: postgresql
   host: localhost
 pagination:
   page_size: 10
+logger:
+  path: log/app.log
+  level: info
+rabbit_mq:
+  consumer_pool: 10

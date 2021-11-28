@@ -5,5 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # RubyMine
+/log/*
+!/log/.keep
 .idea
 .editorconfig
