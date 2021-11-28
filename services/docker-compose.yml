@@ -17,8 +17,11 @@ services:
     volumes:
       - filebeat:/usr/share/filebeat/data
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./filebeat/pipelines:/usr/share/logstash/config/pipelines:ro
+      - ./filebeat/pipelines/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
       - /home/alkp/projects/microservices/ads/log:/var/log/ads:ro  # TODO путь к логам ads микросервиса
       - /home/alkp/projects/microservices/geo/log:/var/log/geo:ro  # TODO путь к логам geo микросервиса
+      - /home/alkp/projects/microservices/auth/log:/var/log/auth:ro  # TODO путь к логам auth микросервиса
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.8.0
     container_name: elasticsearch

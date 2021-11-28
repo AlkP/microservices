@@ -12,6 +12,12 @@ module Ads
       return fail!(I18n.t(:not_found, scope: 'services.ads.update_service')) if @ad.blank?
 
       @ad.update_fields(@data, %i[lat lon])
+      Application.logger.info(
+        'coordinates updated',
+        headers: {
+          request_id: Thread.current[:request_id]
+        }
+      )
     end
   end
 end

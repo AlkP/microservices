@@ -1,7 +1,11 @@
+app:
+  name: auth
+  secret: secret
 db:
   adapter: postgresql
   host: localhost
 pagination:
   page_size: 10
-app:
-  secret: secret
+logger:
+  path: log/app.log
+  level: info
