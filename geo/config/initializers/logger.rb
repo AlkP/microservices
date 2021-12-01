@@ -3,7 +3,7 @@ logger = Ougai::Logger.new(
     level: Settings.logger.level
 )
 
-# logger.formatter = Ougai::Formatters::Readable.new if ENV['RACK_ENV'] == 'development'
+# logger.formatter = Ougai::Formatters::Readable.new if Application.development?
 
 logger.before_log = lambda do |data|
   data[:service] = { name: Settings.app.name }
