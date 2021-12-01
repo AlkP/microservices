@@ -20,7 +20,10 @@ module GeocoderService
         payload,
         opts.merge(
           persistent: true,
-          app_id: Settings.rabbit_mq.app_id
+          app_id: Settings.app.name,
+          headers: {
+            request_id: Thread.current[:request_id]
+          }
         )
       )
     end
