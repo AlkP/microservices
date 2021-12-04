@@ -1,0 +1,26 @@
+---
+- hosts: app
+  become: yes
+  gather_facts: no
+  vars:
+    env_vars: |
+      DOCKER_USER={{ lookup("env", "DOCKER_USER") }}
+      DOCKER_PASSWORD={{ lookup("env", "DOCKER_PASSWORD") }}
+      ADS_DATABASE_URL=postgresql://ads:{{ postgresql_password }}@localhost/ads_microservice_production
+      RABBITMQ_HOST=127.0.0.1
+      RABBITMQ_USER=ads
+      RABBITMQ_PASSWORD={{ rabbitmq_password }}
+      RACK_ENV=production
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: ensure pip is installed
+      apt:
+        name: python3-pip
+    - name: ensure python dependencies are installed
+      pip:
+        name: docker
+    - name: ensure env file is uploaded
+      copy:
+        content: '{{ env_vars }}'
+        dest: '/home/{{ ansible_user }}/.env'

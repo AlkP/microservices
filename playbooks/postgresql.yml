@@ -1,0 +1,48 @@
+---
+- hosts: db
+  become: yes
+  gather_facts: no
+  roles:
+    - common
+  tasks:
+    - name: ensure apt cache is up to date
+      apt:
+        update_cache: yes
+        cache_valid_time: 86400
+    - name: ensure package are installed
+      apt:
+        name:
+          - postgresql
+          - libpq-dev
+          - python3-psycopg2
+- hosts: db
+  become: yes
+  become_user: postgres
+  gather_facts: no
+  vars:
+    database: ads_microservice_production
+    user: ads
+    password: '{{ postgresql_password }}'
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: ensure database is created
+      postgresql_db:
+        name: '{{ database }}'
+    - name: ensure user has access to database
+      postgresql_user:
+        db: '{{ database }}'
+        name: '{{ user }}'
+        password: '{{ password }}'
+        priv: ALL
+    - name: ensure user has no extra privileges
+      postgresql_user:
+        name: '{{ user }}'
+        role_attr_flags: NOSUPERUSER,NOCREATEDB
+    - name: ensure no other user can access the database
+      postgresql_privs:
+        db: '{{ database }}'
+        role: PUBLIC
+        type: database
+        priv: ALL
+        state: absent

@@ -27,6 +27,7 @@ module ApplicationLoader
     require_dir 'app/helpers'
     require_file 'config/application'
     require_file 'app/services/basic_service'
+    require_file 'app/lib/geocoder_service/api.rb'
     require_dir 'app'
   end
 

@@ -1,0 +1,6 @@
+[app]
+ec2-3-131-133-225.us-east-2.compute.amazonaws.com
+
+[all:vars]
+ansible_ssh_private_key_file=~/.ssh/aws211104.pem
+ansible_user=ubuntu

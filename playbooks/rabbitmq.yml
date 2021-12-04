@@ -1,0 +1,68 @@
+---
+- hosts: rabbitmq
+  become: yes
+  gather_facts: no
+  roles:
+    - common
+  tasks:
+    - name: ensure apt cache is up to date
+      apt:
+        update_cache: yes
+        cache_valid_time: 86400
+    - name: ensure package are installed
+      apt:
+        name:
+          - software-properties-common
+    - name: ensure trusted key is added
+      apt_key:
+        url: 'https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc'
+        state: present
+    - name: ensure rabbitmq repositories are added
+      apt_repository:
+        repo: '{{ item }}'
+        state: present
+        update_cache: no
+      with_items:
+        - deb https://dl.bintray.com/rabbitmq-erlang/ubuntu bionic erlang
+        - deb https://dl.bintray.com/rabbitmq/ubuntu bionic main
+    - name: Update cache with not signed application
+      apt:
+        update_cache: yes
+        allow_unauthenticated: yes
+    - name: ensure package is installed
+      apt:
+        name: rabbitmq-server
+    - name: ensure rabbitmq plugins are installed
+      rabbitmq_plugin:
+        names: rabbitmq_management
+        state: enabled
+      notify:
+        - restart rabbitmq
+  handlers:
+    - name: restart rabbitmq
+      service:
+        name: rabbitmq-server
+        state: restarted
+- hosts: rabbitmq
+  become: yes
+  gather_facts: no
+  vars:
+    user: ads
+    password: '{{ rabbitmq_password }}'
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: ensure rabbitmq user is present
+      rabbitmq_user:
+        user: '{{ user }}'
+        password: '{{ password }}'
+        tags: 'administrator'
+        vhost: /
+        configure_priv: .*
+        write_priv: .*
+        read_priv: .*
+        state: present
+    - name: ensure guest user is absent
+      rabbitmq_user:
+        user: guest
+        state: absent
